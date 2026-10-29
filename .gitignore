@@ -1,0 +1,14 @@
+.gradle/
+build/
+app/build/
+local.properties
+.idea/
+*.iml
+.kotlin/
+
+# Firma de versiones publicadas: nunca al repo
+*.jks
+*.keystore
+keystore.properties
+*.apk
+*.aab

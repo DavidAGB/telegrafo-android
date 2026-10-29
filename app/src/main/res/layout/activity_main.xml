@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical">
+
+    <!-- Cabecera -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="10dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Telégrafo de bolsillo"
+                android:textColor="@color/ink"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:fontFamily="monospace"
+                android:letterSpacing="0.16"
+                android:text="TEXTO ⇄ CÓDIGO MORSE"
+                android:textColor="@color/muted"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="monospace"
+            android:letterSpacing="0.14"
+            android:text="LUZ"
+            android:textColor="@color/muted"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/lamp"
+            android:layout_width="28dp"
+            android:layout_height="28dp" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp"
+            android:paddingBottom="18dp">
+
+            <!-- Dirección -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_track"
+                    android:orientation="horizontal"
+                    android:padding="3dp">
+
+                    <TextView
+                        android:id="@+id/btnText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:paddingVertical="9dp"
+                        android:text="Texto → Morse"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/btnMorse"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:paddingVertical="9dp"
+                        android:text="Morse → Texto"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/btnSwap"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_round"
+                    android:contentDescription="Intercambiar: la traducción pasa a ser la entrada"
+                    android:src="@drawable/ic_swap" />
+            </LinearLayout>
+
+            <!-- Entrada -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="12dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/inLabel"
+                        style="@style/Label"
+                        android:layout_width="0dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/btnClear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:text="Borrar todo"
+                        android:textColor="@color/accent"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:background="@null"
+                    android:gravity="top|start"
+                    android:importantForAutofill="no"
+                    android:maxLines="5"
+                    android:minLines="2"
+                    android:padding="0dp"
+                    android:textColor="@color/ink"
+                    android:textColorHint="@color/muted"
+                    android:textSize="21sp" />
+            </LinearLayout>
+
+            <!-- Salida -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="12dp">
+
+                <TextView
+                    android:id="@+id/outLabel"
+                    style="@style/Label"
+                    android:layout_width="match_parent" />
+
+                <TextView
+                    android:id="@+id/emptyHint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/muted"
+                    android:textSize="15sp"
+                    android:textStyle="italic" />
+
+                <com.davidagb.telegrafo.TapeView
+                    android:id="@+id/tape"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" />
+
+                <TextView
+                    android:id="@+id/plain"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="monospace"
+                    android:lineSpacingMultiplier="1.3"
+                    android:textColor="@color/muted"
+                    android:textIsSelectable="true"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/decoded"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:letterSpacing="0.02"
+                    android:textColor="@color/ink"
+                    android:textIsSelectable="true"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/btnPlay"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_btn_primary"
+                        android:drawableStart="@drawable/ic_play"
+                        android:drawablePadding="8dp"
+                        android:drawableTint="@color/on_accent"
+                        android:gravity="center"
+                        android:paddingHorizontal="14dp"
+                        android:text="Reproducir"
+                        android:textColor="@color/on_accent"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/btnCopy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="44dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_btn"
+                        android:drawableStart="@drawable/ic_copy"
+                        android:drawablePadding="8dp"
+                        android:gravity="center"
+                        android:paddingHorizontal="16dp"
+                        android:text="Copiar"
+                        android:textColor="@color/ink"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <CheckBox android:id="@+id/chkSound" style="@style/Chip" android:text="Sonido" />
+                    <CheckBox android:id="@+id/chkLight" style="@style/Chip" android:text="Luz" />
+                    <CheckBox android:id="@+id/chkVibe" style="@style/Chip" android:text="Vibración" />
+                    <CheckBox android:id="@+id/chkTorch" style="@style/Chip" android:text="Linterna" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Ajustes -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/setHeader"
+                    style="@style/SectionHeader">
+
+                    <TextView style="@style/SectionTitle" android:text="Ajustes" />
+
+                    <TextView android:id="@+id/setSign" style="@style/SectionSign" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/setBody"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="14dp"
+                    android:paddingBottom="14dp"
+                    android:visibility="gone">
+
+                    <LinearLayout style="@style/SetRow">
+                        <TextView style="@style/SetName" android:text="Velocidad" />
+                        <TextView android:id="@+id/txtWpm" style="@style/SetValue" />
+                    </LinearLayout>
+
+                    <SeekBar android:id="@+id/seekWpm" style="@style/Seek" android:max="30" android:min="5" />
+
+                    <TextView
+                        style="@style/Hint"
+                        android:text="Palabras por minuto según la palabra patrón PARIS (50 unidades). Un punto dura 1 unidad y una raya 3; entre letras se dejan 3 y entre palabras 7." />
+
+                    <LinearLayout style="@style/SetRow" android:layout_marginTop="14dp">
+                        <TextView style="@style/SetName" android:text="Tono" />
+                        <TextView android:id="@+id/txtFreq" style="@style/SetValue" />
+                    </LinearLayout>
+
+                    <SeekBar android:id="@+id/seekFreq" style="@style/Seek" android:max="100" android:min="40" />
+
+                    <LinearLayout
+                        android:id="@+id/rowTwpm"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout style="@style/SetRow">
+                            <TextView style="@style/SetName" android:text="Velocidad con linterna" />
+                            <TextView android:id="@+id/txtTwpm" style="@style/SetValue" />
+                        </LinearLayout>
+
+                        <SeekBar android:id="@+id/seekTwpm" style="@style/Seek" android:max="20" android:min="3" />
+
+                        <TextView
+                            style="@style/Hint"
+                            android:text="Con la linterna activada todo se emite como máximo a esta velocidad, para que quien mire pueda leer los destellos." />
+                    </LinearLayout>
+
+                    <Switch
+                        android:id="@+id/swEcho"
+                        style="@style/SetSwitch"
+                        android:text="Sonar cada tecla al escribir" />
+
+                    <Switch
+                        android:id="@+id/swAutogap"
+                        style="@style/SetSwitch"
+                        android:text="Separar letras y palabras solo con el manipulador" />
+
+                    <TextView
+                        style="@style/Hint"
+                        android:text="Con el manipulador, si dejas de pulsar 3 unidades se cierra la letra y con 7 se cierra la palabra. Si vas despacio, baja la velocidad." />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Alfabeto -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/abcHeader"
+                    style="@style/SectionHeader">
+
+                    <TextView style="@style/SectionTitle" android:text="Alfabeto Morse" />
+
+                    <TextView android:id="@+id/abcSign" style="@style/SectionSign" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/abcBody"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="11dp"
+                    android:paddingBottom="11dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        style="@style/Hint"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginBottom="6dp"
+                        android:text="Toca un signo para escucharlo." />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Teclado Morse -->
+    <LinearLayout
+        android:id="@+id/pad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/key_band"
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="10dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:orientation="horizontal">
+
+            <TextView android:id="@+id/keyDot" style="@style/Key" android:layout_marginEnd="6dp" />
+            <TextView android:id="@+id/keyDash" style="@style/Key" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="6dp"
+            android:orientation="horizontal">
+
+            <TextView android:id="@+id/keyLetter" style="@style/KeyFn" android:layout_marginEnd="6dp" android:text="Fin de letra" />
+            <TextView android:id="@+id/keyWord" style="@style/KeyFn" android:layout_marginEnd="6dp" android:text="Palabra /" />
+            <TextView android:id="@+id/keyBack" style="@style/KeyFn" android:contentDescription="Borrar" android:text="⌫" android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/paddle"
+            android:layout_width="match_parent"
+            android:layout_height="86dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/bg_paddle"
+            android:contentDescription="Manipulador: mantén pulsado. Pulsación corta es punto, larga es raya"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <View
+                android:id="@+id/knob"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:layout_marginEnd="16dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="Manipulador"
+                    android:textColor="@color/bg"
+                    android:textSize="19sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.75"
+                    android:fontFamily="monospace"
+                    android:letterSpacing="0.08"
+                    android:text="CORTO = PUNTO · LARGO = RAYA"
+                    android:textColor="@color/bg"
+                    android:textSize="10sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
