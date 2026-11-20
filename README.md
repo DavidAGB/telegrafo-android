@@ -23,7 +23,7 @@ Written in Kotlin with the Android SDK only, no external libraries.
 | Android | minimum 8 (API 26), built for Android 15 (API 35) |
 | Sound | a continuous `AudioTrack` tone with a gate, so the key responds without delay |
 | Light | `CameraManager.setTorchMode`, which needs no camera permission |
-| UI | native views built in code, with a custom view for the tape |
+| UI | native views with an XML layout, plus a custom view for the tape |
 | Dependencies | none beyond the Android SDK |
 | Size | about 1,150 lines in 4 files |
 
